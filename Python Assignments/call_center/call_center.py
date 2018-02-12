@@ -31,8 +31,8 @@ class callCenter(object):
         print "Queue is now at", self.queue,"callers."
         return self
 
-    def removeFirst(self):
-        self.call_list.pop[0]
+    def removeFirst(self,firstCaller):
+        self.call_list.pop(0)
         self.queue=len(self.call_list)
         print "Caller removed from queue."
         print "Queue is now at", self.queue,"callers."
@@ -62,6 +62,6 @@ call4.display_all()
 
 
 
-BinghamClinic.add_call(call1).add_call(call2).add_call(call3).info().removeFirst().removeFirst().add_call(call4).removeFirst().info()
+BinghamClinic.add_call(call1).add_call(call2).add_call(call3).info().removeFirst(call2).removeFirst(call1).add_call(call4).removeFirst(call3).info()
 
 
