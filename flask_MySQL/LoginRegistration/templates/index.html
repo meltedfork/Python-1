@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <title>Login Registration</title>
+</head>
+
+<body>
+    <div id="wrapper">
+
+        <h2>Please Register</h2>
+        <form action="/register" method="POST">
+            {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+            <h2>{{message}}</h2>
+            {% endfor %} {% endif %} {% endwith %}
+
+            <!-- <input type="hidden" name="action" value="register"> -->
+            <div>
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name">
+            </div>
+            <div>
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" name="email">
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" name="password">
+            </div>
+            <div>
+                <label for="confirm">Confirm Password:</label>
+                <input type="password" name="confirm">
+            </div>
+            <div>
+                <input type="submit" name="submit" value="submit">
+            </div>
+        </form>
+
+        <h2>Login if you already have an account</h2>
+        <form action="/login" method="POST">
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" name="email">
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" name="password">
+            </div>
+            <div>
+                <input type="submit" name="login" value="login">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+
+<!-- needs hashing -->
