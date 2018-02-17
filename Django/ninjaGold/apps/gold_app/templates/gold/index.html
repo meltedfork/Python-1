@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h4>Your gold: {{request.session.gold}}</h4>
+
+        <h1>{{request.session.punish}}</h1>
+
+        <div id="farm_div">
+            <h5>Farm</h5>
+            <p>(earns 10-20 gold)</p>
+            <form action="/process" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="farm">
+                <input type="submit" name="farm" value="Find Gold!">
+            </form>
+        </div>
+
+        <div id="cave_div">
+            <h5>Cave</h5>
+            <p>(earns 5-10 gold)</p>
+            <form action="/process" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="cave">
+                <input type="submit" name="cave" value="Find Gold!">
+            </form>
+        </div>
+        <div id="house_div">
+            <h5>House</h5>
+            <p>(earns 2-5 gold)</p>
+            <form action="/process" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="house">
+                <input type="submit" name="house" value="Find Gold!">
+            </form>
+        </div>
+
+        <div id="casino_div">
+            <h5>Casino</h5>
+            <p>(earns/takes 0-50 gold)</p>
+            <form action="/process" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="casino">
+                <input type="submit" name="casino" value="Find Gold!">
+            </form>
+            <form action="/process" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="restart">
+                <input type="submit" name="restart" value="START OVER">
+            </form>
+        </div>
+
+        <div id="activities_div">
+            <h5>{{request.session.log}}</h5>
+        </div>
+    </div>
+</body>
+</html>
