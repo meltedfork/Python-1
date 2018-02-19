@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Welcome to Amadon!</h1><br>
+        <div id="store">
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                </tr>
+                <tr>
+                    <td>Chicken skins</td>
+                    <td>$5.00</td>
+                    <td>
+                        <form action='/buy' method='post'>
+                            {% csrf_token %}
+                            <select name='quantity'>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                            <input type='hidden' name='product_id' value='1' />
+                            <input type='submit' value='Buy!' />
+                        </form>
+                    </td>
+                 <tr>
+                    <td>Good Burger on VHS</td>
+                    <td>$0.28</td>
+                    <td>
+                        <form action='/buy' method='post'>
+                            {% csrf_token %}
+                            <select name='quantity'>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                            <input type='hidden' name='product_id' value='2' />
+                            <input type='submit' value='Buy!' />
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Newborn child (no questions asked!)</td>
+                    <td>$4000.00</td>
+                    <td>
+                        <form action='/buy' method='post'>
+                            {% csrf_token %}
+                            <select name='quantity'>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                            <input type='hidden' name='product_id' value='3' />
+                            <input type='submit' value='Buy!' />
+                        </form>
+                    </td>
+                </tr>
+                
+            </table>
+
+        </div>
+
+        <form action="/reset">
+            <input type="submit" name="reset" value="reset">
+        </form>
+        
+    </div>
+
+</body>
+</html>

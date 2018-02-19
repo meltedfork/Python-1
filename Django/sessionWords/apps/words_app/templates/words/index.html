@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Add a new word. Swears encouraged.</h1>
+
+    <form action="/add" method="POST">
+        {% csrf_token %}
+        <input type="text" name="word"><br>
+        <input type="radio"  name="color" value="red" checked>Red<br>
+        <input type="radio"  name="color" value="blue">Blue <br>
+        <input type="radio"  name="color" value="green">Green <br>
+        Make word bigger?
+        <input type="radio" name="yes" value="yes">Yes
+        <input type="radio" name="no" value="no" checked>No
+        <input type="submit" value="Add to Session">
+
+    </form>
+
+    <br>
+
+    <p>______________________________________________________________________________________________________________________________________________</p>
+
+    <form action="/clear" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Clear Session">
+    </form>
+    
+    {%for i in request.session.queue%}
+            {%if i.size%}
+            <h2 style="color: {{i.color}}">{{i.word}}</h2>
+            {%else%}
+            <p style="color: {{i.color}}">{{i.word}}</p>
+            {%endif%}
+            <p> posted at {{i.time}}</p>
+            {%endfor%}
+</body>
+</html>
