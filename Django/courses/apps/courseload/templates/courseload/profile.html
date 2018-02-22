@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+<h1>Hello, {{request.session.first}}!</h1>
+<br>
+<br>
+<br>
+
+<h2>Check out your favorite courses below!</h2>
+
+    {% for favorite in favorites %}
+            
+        <p>Course Name: {{favorite.name}}</p>
+        <p> Course Description: {{favorite.desc}}</p>  
+        <!-- <td>{{course.descriptions.desc}}</td>  -->
+                <!--above is how to link one to one field in html  -->
+        <a href="/courseload/{{favorite.id}}/unfave">Unfavorite this course</a>
+        <p>___________________________________________________________________</p>
+            
+    {%endfor%}
+
+    
+<br>
+<br>
+    <form action="{%url 'courses:index' %}">
+            {% csrf_token %}
+            <input type="submit" name="return" value="Return to Courses">
+        </form>
+
+</body>
+</html>

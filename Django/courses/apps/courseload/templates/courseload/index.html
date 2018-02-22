@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add a new course</h1>
+
+    {% if messages %}
+		{% for x in messages %}
+			<p>{{ x.message }}</p>
+		{% endfor %}
+	{% endif %}
+
+    <form action="{%url 'courses:add' %}" method="POST">
+        {% csrf_token %}
+        <label for="name">Name: </label>
+        <input type="text" name="name">
+        <label for="desc">Description: </label>
+        <input type="text" name="desc">
+        <input type="submit" value="add">
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Course Name</th>
+                <th>Description</th>
+                <th>Date Added</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for course in courses %}
+            <tr>
+                <td>{{course.name}}</td>
+                <td>{{course.desc}}</td> 
+                <!-- <td>{{course.descriptions.desc}}</td>  -->
+                        <!--above is how to link one to one field in html  -->
+                <td>{{course.created}}</td>
+                <td><a href="{{course.id}}/delete">Remove</td>
+                <td><a href="{{course.id}}/addfave">Add As Favorite</a></td>
+            </tr>
+        {%endfor%}
+        </tbody>
+
+    </table>
+    <br>
+    <form action="{%url 'login:logout' %}">
+        {% csrf_token %}
+        <input type="submit" name="logout" value="logout">
+    </form>
+    <br>
+    <form action="{{request.session.userid}}/profile">
+        {% csrf_token %}
+        <input type="submit" name="profile" value="Go To Your Profile">
+    </form>
+</body>
+</html>
